@@ -9,7 +9,7 @@
 <body>
 <main class="container">
     <a href="/">Home</a>
-    <h1>Add Your Recipe</h1>
+    <h1><?= $action ?> Your Recipe</h1>
 
     <?php foreach ($errors as $error) : ?>
         <p><?= $error ?></p>

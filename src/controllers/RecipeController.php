@@ -58,6 +58,8 @@ class RecipeController
             }
         }
 
+        $action = 'Add';
+
         // Generate the web page
         require __DIR__ . '/../views/form.php';
     }
@@ -90,6 +92,8 @@ class RecipeController
                 header('Location: /');
             }
         }
+
+        $action = 'Update';
 
         // Generate the web page
         require __DIR__ . '/../views/form.php';
