@@ -1,19 +1,31 @@
 <?php
 
-require __DIR__ . '/controllers/recipe-controller.php';
+require __DIR__ . '/controllers/RecipeController.php';
 
 $urlPath = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
-switch ($urlPath) {
-    case '/':
-        browseRecipes();
-        break;
-    case '/show':
-        showRecipe($_GET['id']);
-        break;
-    case '/add':
-        addRecipe();
-        break;
-    default :
-        header('HTTP/1.1 404 Not Found');
+$recipeController = new RecipeController();
+
+if('/' === $urlPath) {
+
+    $recipeController->browse();
+
+} elseif ('/show' === $urlPath && isset($_GET['id'])) {
+
+    $recipeController->show($_GET['id']);
+
+} elseif ('/add' === $urlPath) {
+
+    $recipeController->add();
+
+} elseif ('/update' === $urlPath && isset($_GET['id'])) {
+
+    $recipeController->update($_GET['id']);
+
+} elseif ('/delete' === $urlPath && isset($_GET['id'])) {
+
+    $recipeController->delete($_GET['id']);
+
+} else {
+    header('HTTP/1.1 404 Not Found');
 }

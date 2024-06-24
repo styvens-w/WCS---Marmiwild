@@ -1,24 +1,34 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>List of Recipes</title>
+    <title>Add Your Recipe</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
 </head>
 <body>
-<a href="/"><-- return</a>
-<h1>Add a Recipe</h1>
-<?php foreach ($errors as $error) : ?>
-<p><?=$error?></p>
-<?php endforeach; ?>
-<form action="" method="post">
-    <label for="title" style="display: block">Title</label>
-    <input type="text" id="title" name="title" style="display: block; margin-bottom: 20px">
+<main class="container">
+    <a href="/">Home</a>
+    <h1>Add Your Recipe</h1>
 
-    <label for="description" style="display: block">Description</label>
-    <textarea name="description" id="description" cols="30" rows="10" style="display: block; margin-bottom: 20px"></textarea>
+    <?php foreach ($errors as $error) : ?>
+        <p><?= $error ?></p>
+    <?php endforeach; ?>
 
-    <input type="submit">
-</form>
+    <form action="" method="post">
+        <div>
+            <input type="hidden" name="id" value=" <?= $recipe['id'] ?? '' ?>">
+        </div>
+        <div>
+            <label for="title">Title</label>
+            <input id="title" name="title" type="text" value="<?= $recipe['title'] ?? '' ?>">
+        </div>
+        <div>
+            <label for="description">Description</label>
+            <textarea id="description" name="description"><?= $recipe['description'] ?? '' ?></textarea>
+        </div>
+        <button>Send</button>
+    </form>
+</main>
 </body>
 </html>
